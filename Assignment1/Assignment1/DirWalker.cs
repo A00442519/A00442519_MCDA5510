@@ -10,7 +10,8 @@ namespace Assignment1
 
         public void walk(String path)
         {
-
+            SimpleCSVParser parser = new SimpleCSVParser();
+            
             string[] list = Directory.GetDirectories(path);
 
 
@@ -27,16 +28,20 @@ namespace Assignment1
             string[] fileList = Directory.GetFiles(path);
             foreach (string filepath in fileList)
             {
-
-                    Console.WriteLine("File:" + filepath);
+                parser.parse(filepath);
+                //Console.WriteLine("File:" + filepath);
             }
         }
 
-//        public static void Main(String[] args)
-//        {
-//            DirWalker fw = new DirWalker();
-//           fw.walk(@"/");
-//        }
+        public static void Main(String[] args)
+        {   
+            DirWalker fw = new DirWalker();
+            SimpleCSVParser parser = new SimpleCSVParser();
+
+            //fw.walk(@"E:/MCDA/5510/MCDA5510_Assignments/Assignment1/Assignment1/testFiles/");
+            fw.walk(@"E:/MCDA/5510/MCDA5510_Assignments/Sample Data"); 
+
+        }
 
     }
 }

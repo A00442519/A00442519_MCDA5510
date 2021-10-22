@@ -1,5 +1,5 @@
 ID,RefID,alias,Catogory,Param1,Param2,Param3,Param4,Param5,Param6,Param7,Param8,Param9,Param10,Param11,Param12,Param13,Hour,Minute,Param14,Param15,Param16,Param17,Param18,Data,Result Comments,Subject User Number 3,Check
-A1234567,1001,10011001,1,,,POINT,1234957,,Data6,Data7,,,Data10,9999,,H,UNSPECIFIED,,,m/s,,,,,,Data 17,23
+A1234567,1001,10011001,1,1,1,POINT,1234957,1,Data6,Data7,1,1,Data10,9999,1,H,UNSPECIFIED,,1,m/s,1,1,1,1,1,Data 17,23
 A1234567,1001,10011001,1,,,POINT,1234958,,Data6,Data7,CYCLE,1,Data10,8,,H,UNSPECIFIED,,,m/s,,,,,,Data 17,24
 A1234567,1001,10011001,1,,,POINT,1234959,,Data6,Data7,CYCLE,1,Data10,21,,H,UNSPECIFIED,,,m/s,,,,2; To be done on Wednesday,,Data 17,25
 A1234567,1001,10011002,2,,,POINT,1234964,,Data6,Data7,,,Data10,9999,,H,UNSPECIFIED,,,m/s,,,,,,Data 17,23

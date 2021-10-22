@@ -8,15 +8,16 @@ namespace Assignment1
     {
 
 
- //       public static void Main(String[] args)
- //       {
- //           SimpleCSVParser parser = new SimpleCSVParser();
- //           parser.parse(@"/Users/dpenny/Projects/Assignment1/Assignment1/sampleFile.csv");
- //       }
+        //public static void Main(String[] args)
+        //{
+        //    SimpleCSVParser parser = new SimpleCSVParser();
+        //    parser.parse(@"sampleFile.csv");
+        //}
 
 
         public void parse(String fileName)
         {
+            int skippedRows = 1; 
             try { 
             using (TextFieldParser parser = new TextFieldParser(fileName))
             {
@@ -24,15 +25,30 @@ namespace Assignment1
                 parser.SetDelimiters(",");
                     while (!parser.EndOfData)
                 {
-                    //Process row
-                    string[] fields = parser.ReadFields();
-                    foreach (string field in fields)
-                    {
-                        Console.WriteLine(field);
+                        //Process row
+                        string row = "";                
+                        string[] fields = parser.ReadFields();
+                        int rowInvalid = 0;
+                        foreach (string field in fields)
+                        {   
+                            row = row + field + ",";
+                            if (String.IsNullOrEmpty(field))
+                            {
+                                rowInvalid = 1;
+                                break;
+                            }
+                            
+                        }
+                        if (rowInvalid==0)
+                        {
+                            File.AppendAllText("E:/MCDA/5510/MCDA5510_Assignments/Assignment1/Assignment1/testOp.csv", row + "\n");
+                        }
+                        else
+                        {
+                            skippedRows++;
+                        }
                     }
-                }
-            }
-        
+                }        
         }catch(IOException ioe){
                 Console.WriteLine(ioe.StackTrace);
          }
