@@ -15,14 +15,21 @@ namespace Assignment1
         //}
 
 
-        public void parse(String fileName)
+        public string parse(String fileName,ref int skippedRows, ref int validRows)
         {
-            int skippedRows = 1; 
+            //int skippedRows = 0;
+            //int validRows = 0;
+            string fileText = String.Empty;
             try { 
             using (TextFieldParser parser = new TextFieldParser(fileName))
             {
+                    string[] listFileName = fileName.Split("\\");
+                    string date = listFileName[listFileName.Length- 4] + '/' + 
+                        listFileName[listFileName.Length - 3] + '/' + 
+                        listFileName[listFileName.Length - 2] ;
                 parser.TextFieldType = FieldType.Delimited;
                 parser.SetDelimiters(",");
+
                     while (!parser.EndOfData)
                 {
                         //Process row
@@ -41,7 +48,9 @@ namespace Assignment1
                         }
                         if (rowInvalid==0)
                         {
-                            File.AppendAllText("E:/MCDA/5510/MCDA5510_Assignments/Assignment1/Assignment1/testOp.csv", row + "\n");
+                            //File.AppendAllText("E:/MCDA/5510/MCDA5510_Assignments/Assignment1/Assignment1/testOp.csv", row + "\n");
+                            fileText = fileText + row + date + "\n";
+                            validRows++;
                         }
                         else
                         {
@@ -52,6 +61,8 @@ namespace Assignment1
         }catch(IOException ioe){
                 Console.WriteLine(ioe.StackTrace);
          }
+
+            return fileText;
 
     }
 
