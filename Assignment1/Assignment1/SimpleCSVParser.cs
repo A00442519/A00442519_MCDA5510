@@ -17,8 +17,6 @@ namespace Assignment1
 
         public string parse(String fileName,ref int skippedRows, ref int validRows)
         {
-            //int skippedRows = 0;
-            //int validRows = 0;
             string fileText = String.Empty;
             try { 
             using (TextFieldParser parser = new TextFieldParser(fileName))
@@ -33,18 +31,22 @@ namespace Assignment1
                     while (!parser.EndOfData)
                 {
                         //Process row
-                        string row = "";                
+                        string row = ""; 
                         string[] fields = parser.ReadFields();
+                        if (fields[0]=="First Name")
+                        {
+                            continue;
+                        }
                         int rowInvalid = 0;
                         foreach (string field in fields)
                         {   
+
                             row = row + field + ",";
                             if (String.IsNullOrEmpty(field))
                             {
                                 rowInvalid = 1;
                                 break;
-                            }
-                            
+                            }                            
                         }
                         if (rowInvalid==0)
                         {
