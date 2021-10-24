@@ -8,4 +8,14 @@
   <ItemGroup>
     <Compile Remove="EmptyClass.cs" />
   </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="log4net" Version="2.0.12" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="log.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>

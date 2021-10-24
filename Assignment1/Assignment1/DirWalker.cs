@@ -1,6 +1,9 @@
-﻿using System;
+﻿using log4net;
+using log4net.Config;
+using System;
 using System.Diagnostics;
 using System.IO;
+using System.Reflection;
 
 namespace Assignment1
 {
@@ -8,6 +11,8 @@ namespace Assignment1
 
     public class DirWalker
     {
+        public static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
 
         public void walk(String path, ref int skippedRows, ref int validRows, ref string outputPath)
         {
@@ -25,7 +30,7 @@ namespace Assignment1
                 if (Directory.Exists(dirpath))
                 {
                     walk(dirpath, ref skippedRows, ref validRows, ref outputPath);
-                    Console.WriteLine("Dir:" + dirpath);
+                    // Console.WriteLine("Dir:" + dirpath);
                 }
             }
             string[] fileList = Directory.GetFiles(path);
@@ -39,6 +44,13 @@ namespace Assignment1
 
         public static void Main(String[] args)
         {
+            var logRepo = LogManager.GetRepository(Assembly.GetEntryAssembly());
+            XmlConfigurator.Configure(logRepo, new FileInfo("log.config"));
+
+            //log.Info(sMessage);
+
+            //log.Error(sMessage);
+
             var timer = new Stopwatch();
             timer.Start();
             int skippedRows = 0;
@@ -60,7 +72,7 @@ namespace Assignment1
             timer.Stop();
 
             File.AppendAllText(outputPath + "/Output.csv", 
-                "Execution Time:" +  timer.Elapsed.Seconds + "\nSkipped Rows: " + skippedRows + "\nValid Rows: " + validRows);
+                "Execution Time:" +  timer.Elapsed.Seconds + "seconds\nSkipped Rows: " + skippedRows + "\nValid Rows: " + validRows);
      
 
         }
