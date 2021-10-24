@@ -71,10 +71,10 @@ namespace Assignment1
 
             timer.Stop();
 
-            File.AppendAllText(outputPath + "/Output.csv", 
-                "Execution Time:" +  timer.Elapsed.Seconds + "seconds\nSkipped Rows: " + skippedRows + "\nValid Rows: " + validRows);
-     
+            //File.AppendAllText(outputPath + "/Output.csv", 
+              //  "Execution Time:" +  timer.Elapsed.Seconds + "seconds\nSkipped Rows: " + skippedRows + "\nValid Rows: " + validRows);
 
+            log.Info("Execution Time:" + timer.Elapsed.Seconds + "seconds\nSkipped Rows: " + skippedRows + "\nValid Rows: " + validRows);
         }
 
     }

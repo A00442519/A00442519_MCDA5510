@@ -1,5 +1,7 @@
-﻿using System;
+﻿using log4net;
+using System;
 using System.IO;
+using System.Reflection;
 
 namespace Assignment1
 {
@@ -8,6 +10,7 @@ namespace Assignment1
 
     public class Exceptions
     {
+        public static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         //static void Main()
         //{
@@ -23,7 +26,7 @@ namespace Assignment1
         {
             if (path is null)
             {
-                Console.WriteLine("You did not supply a file path.");
+                log.Error("You did not supply a file path.");
                 return null;
             }
 
@@ -34,35 +37,35 @@ namespace Assignment1
             }
             catch (FileNotFoundException)
             {
-                Console.WriteLine("The file or directory cannot be found.");
+                log.Error("The file or directory cannot be found.");
             }
             catch (DirectoryNotFoundException)
             {
-                Console.WriteLine("The file or directory cannot be found.");
+                log.Error("The file or directory cannot be found.");
             }
             catch (DriveNotFoundException)
             {
-                Console.WriteLine("The drive specified in 'path' is invalid.");
+                log.Error("The drive specified in 'path' is invalid.");
             }
             catch (PathTooLongException)
             {
-                Console.WriteLine("'path' exceeds the maxium supported path length.");
+                log.Error("'path' exceeds the maxium supported path length.");
             }
             catch (UnauthorizedAccessException)
             {
-                Console.WriteLine("You do not have permission to create this file.");
+                log.Error("You do not have permission to create this file.");
             }
             catch (IOException e) when ((e.HResult & 0x0000FFFF) == 32)
             {
-                Console.WriteLine("There is a sharing violation.");
+                log.Error("There is a sharing violation.");
             }
             catch (IOException e) when ((e.HResult & 0x0000FFFF) == 80)
             {
-                Console.WriteLine("The file already exists.");
+                log.Error("The file already exists.");
             }
             catch (IOException e)
             {
-                Console.WriteLine($"An exception occurred:\nError code: " +
+                log.Error($"An exception occurred:\nError code: " +
                                   $"{e.HResult & 0x0000FFFF}\nMessage: {e.Message}");
             }
             return null;

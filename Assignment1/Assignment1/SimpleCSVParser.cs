@@ -76,7 +76,7 @@ namespace Assignment1
             }
             catch (IOException ioe)
             {
-                Console.WriteLine(ioe.StackTrace);
+                log.Error(ioe.StackTrace);
             }
 
             return fileText;
