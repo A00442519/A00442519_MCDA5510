@@ -12,24 +12,23 @@ Write a C# program to traverse a directory structure (DirWalker.cs) of csv files
 ## File Structure:
 ~~~~~~~
         Assignment1
-          |-- Findings
-                |-- ReadMe.pdf
+	  |-- Assignment1.sln
           |-- Logs
                 |-- logs.main
           |-- Output
                 |-- output.csv             
           |-- Assignment1.csproj
-		  |-- DirWalker.cs
-		  |-- EmptyClass.cs
-		  |-- Exceptions.cs
-		  |-- SimpleCSVParser.cs
-		  |-- bin/
-				|-- 
-		  |-- log.config
-		  |-- obj/      
-				|-- 
+	  |-- DirWalker.cs
+	  |-- EmptyClass.cs
+	  |-- Exceptions.cs
+	  |-- SimpleCSVParser.cs
+	  |-- bin/
+		|-- 
+	  |-- log.config
+	  |-- obj/      
+		|-- 
           |-- README
-		  |-- Assignment1.sln
+
 ~~~~~~~
 
 ## Setup
